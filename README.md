@@ -7,5 +7,7 @@
 - @speed {Number} 每次滚动的距离是目前滚动总距离的 1 / speed,此值越大，滚动越快
 - @interval {Number} 定时器执行间隔。间隔越小，滚动越快
 
+<code>
     const maxyutils = require("maxyutils");
     maxyutils.scrollToPos(50); // 滚动到距页面顶部50px的位置
+ </code>   
