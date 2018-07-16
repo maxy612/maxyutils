@@ -52,14 +52,14 @@ const scrollToPos = ({pos = 0, el = "html", isVertical = true, speed = 6, interv
         dis = Math.floor(scrollDis / speed);
         
         if (scrollOri > pos) {
-            scrollDis -= dis;
+            scrollOri -= dis;
         }
 
         if (scrollOri < pos) {
-            scroll += dis;
+            scrollOri += dis;
         }
 
-        window.scrollTo(isVertical ? 0 : pos, isVertical ? pos : 0);
+        window.scrollTo(isVertical ? 0 : scrollOri, isVertical ? scrollOri : 0);
     }, interval)
 }
 
