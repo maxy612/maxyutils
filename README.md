@@ -8,10 +8,10 @@
 - @interval {Number} 定时器执行间隔。间隔越小，滚动越快，可选
 
 <code>
-    // scrollToPos({pos: 30, el: ".wrapper", speed: 5, interval: 15})
-    // 在浏览器中直接使用
-    maxyutils.scrollToPos({pos: 50}); // 滚动到距页面顶部50px的位置
-    // 在webpack下使用
-    import { scrollToPos } from "maxyutils"
-    scrollToPos({pos: 50})
+    > // scrollToPos({pos: 30, el: ".wrapper", speed: 5, interval: 15})
+    > // 在浏览器中直接使用
+    > maxyutils.scrollToPos({pos: 50}); // 滚动到距页面顶部50px的位置
+    > // 在webpack下使用
+    > import { scrollToPos } from "maxyutils"
+    > scrollToPos({pos: 50})
 </code>   
