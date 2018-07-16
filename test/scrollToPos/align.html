@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #test {
+            position: relative;
+            width: 5000px;
+            height: 100%;
+            background: #00a0e9;
+        }
+
+        #test button {
+            position: absolute;
+        }
+
+        #btn1 {
+            left: 10px;
+        }
+
+        #btn2 {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">
+        <button id="btn1">滚动到5000（横向）</button>
+        <button id="btn2">滚动到0（横向）</button>
+    </div>
+
+    <script src="../../dist/maxyutils.min.js"></script>
+    <script>
+        (function () {
+            const btn1 = document.querySelector("#btn1");
+            const btn2 = document.querySelector("#btn2");
+
+            btn1.onclick = () => {
+                maxyutils.scrollToPos({
+                    el: "#test",
+                    pos: 5000,
+                    isVertical: false
+                });
+            }
+
+            btn2.onclick = () => {
+                maxyutils.scrollToPos({
+                    el: "#test",
+                    pos: 0,
+                    isVertical: false
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
