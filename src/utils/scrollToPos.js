@@ -23,6 +23,12 @@ const scrollToPos = ({pos = 0, el = "html", isVertical = true, speed = 6, interv
     let rootEle = document.querySelector(el);
     let cliEle = document.documentElement || document.body;
 
+    // 校验rootEle是否为空
+    if (!rootEle) {
+        console.error("指定的el不存在");
+        return;
+    }
+
     // 获取到根源素的宽或高
     let eleVal = isVertical ? rootEle.offsetHeight : rootEle.offsetWidth;
     // 获取到视窗的宽或高
