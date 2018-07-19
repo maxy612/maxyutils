@@ -5,7 +5,7 @@
   "main": "dist/maxyutils.min.js",
   "scripts": {
     "build": "rollup -c build/rollup.prod.js",
-    "build-dev": "rollup -c build/rollup.dev.js"
+    "dev": "rollup -c build/rollup.dev.js -w"
   },
   "repository": {
     "type": "git",

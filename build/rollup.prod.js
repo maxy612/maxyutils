@@ -10,17 +10,20 @@ const config = {
         {
             file: `${rootPath}/dist/maxyutils.cjs.min.js`,
             format: "cjs",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.min.js`,
             format: "umd",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.win.min.js`,
             format: "iife",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         }
     ],
     plugins: [
@@ -29,8 +32,7 @@ const config = {
         }),
         clean(),
         uglify()
-    ],
-    sourcemap: "inline"
+    ]
 }
 
 export default config;
