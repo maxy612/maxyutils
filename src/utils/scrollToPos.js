@@ -22,9 +22,19 @@ const scrollToPos = opts => {
         interval: 10
     };
 
-    if (opts && typeof opts === "number") {
-        config.pos = opts;
+    if (typeof opts !== "object") {
+        if (typeof opts === "number") {
+            config.pos = opts;
+        } else {
+            console.error("scrollToPos: 参数应为大于等于0的数字或对象");
+            return;
+        }
     } 
+
+    if (opts === null) {
+        console.error("scrollToPos: 参数应为大于等于0的数字或对象");
+        return;
+    }
 
     // 合并config和传入的opts
     if (typeof opts === "object" && Object.prototype.toString.call(opts) === "[object Object]") {
@@ -37,7 +47,7 @@ const scrollToPos = opts => {
 
     let { pos, el, isVertical, speed, interval } = config;
 
-    if (typeof pos !== "number" || pos < 0 || isNaN(pos) || (typeof opts !== "object" && typeof opts !== "number")) {
+    if (typeof pos !== "number" || pos < 0 || isNaN(pos)) {
         console.error("scrollToPos: 滚动参数pos应为大于等于0的数字");
         return;
     }

@@ -11,19 +11,16 @@ const config = {
             file: `${rootPath}/dist/maxyutils.cjs.min.js`,
             format: "cjs",
             name: "maxyutils",
-            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.min.js`,
             format: "umd",
             name: "maxyutils",
-            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.win.min.js`,
             format: "iife",
-            name: "maxyutils",
-            sourcemap: "inline"
+            name: "maxyutils"
         }
     ],
     plugins: [
