@@ -25,3 +25,19 @@ scrollToPos({
     isVertical: true
 })
 ```
+
+### ImgLazyload 图片懒加载（移动端暂时请勿使用）
+- 图片懒加载
+- @params opts
+- opts.container 可选，默认为html，指定需要懒加载图片元素的父容器
+- opts.defaultImg 可选，加载之前默认的图片
+- opts.errorImage 可选，加载网络图片出错时的图片
+- opts.delay 滚动检测的间隔（函数节流）。每隔delay毫秒进行一次check，来加载处于视窗中的元素图片资源
+
+``` javascript
+maxyutils.ImgLazyload.init({container: "#test", delay: 500, defaultImg: "", errorImg: ""});
+// 简写
+maxyutils.ImgLazyload.init();
+// webpack下用法同scrollToPos
+```
+

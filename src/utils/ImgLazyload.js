@@ -1,5 +1,14 @@
-class ImgLazyload {
-    constructor({container = "html", defaultImg = "", errorImage = "", delay = 500}) {
+/**
+ * 图片懒加载
+ * @params opts
+ * opts.container 可选，默认为html，指定需要懒加载图片元素的父容器
+ * opts.defaultImg 可选，加载之前默认的图片
+ * opts.errorImage 可选，加载网络图片出错时的图片
+ * opts.delay 滚动检测的间隔（函数节流）。每隔delay毫秒进行一次check，来加载处于视窗中的元素图片资源
+ */
+const ImgLazyload = {
+    // 注册滚动事件
+    init({ container = "html", defaultImg = "", errorImage = "", delay = 500 }) {
         this.el = document.querySelector(container);
         // 收集在container下的懒加载的图片
         this.children = [];
@@ -13,18 +22,13 @@ class ImgLazyload {
         this.wHeight = cliEle.clientHeight;
         this.wWidth = cliEle.clientWidth;
 
-        this.init();
-    }
-
-    // 注册滚动事件
-    init() {
         let cbfn = this.throttle();
         if (window.addEventListener) {
-            window.addEventListener("scroll", cbfn, false);
-            window.addEventListener("touchmove", cbfn, false);            
-            window.addEventListener("load", cbfn, false);
+            window.addEventListener("scroll", cbfn, true);
+            window.addEventListener("touchmove", cbfn, true);            
+            window.addEventListener("load", cbfn, true);
         }
-    }
+    },
 
     // 函数节流
     throttle() {
@@ -37,7 +41,7 @@ class ImgLazyload {
                 prev = now;
             }
         }
-    }
+    },
 
     // 获取所有带lazyload的属性的dom元素
     getLazyLoadEls() {
@@ -49,7 +53,7 @@ class ImgLazyload {
                 this.setImageForEl(eles[i], this.defaultImg);
             }
         }
-    }
+    },
 
     // 为元素设置图片
     setImageForEl(el, imgUrl) {
@@ -61,7 +65,7 @@ class ImgLazyload {
         } else {
             el.style.backgroundImage = `url(${imgUrl || ""})`;
         }
-    }
+    },
 
     // 检查单个元素是否在视窗中
     checkInView(el) {
@@ -73,28 +77,33 @@ class ImgLazyload {
         }
 
         return false;
-    }
+    },
 
     // 遍历子元素，处理在视窗中的元素
     check() {
+        this.getLazyLoadEls();
+        if (!this.children.length) return;
         this.children.forEach(item => {
             // 如果在视窗中 
             if (this.checkInView(item)) {
                 this.handleElInView(item);
             }
         })
-    }
+    },
 
     // 将元素的lazyload属性取出来，然后新建一个image对象
     handleElInView(el) {
+        if (el.nodeType !== 1) return;
         const imgUrl = el.getAttribute("lazyload");
+        if (!imgUrl) return;
         const Img = new Image();
-
         Img.src = imgUrl;
+
+        el.removeAttribute("lazyload");
         Img.addEventListener("load", () => {
             this.setImageForEl(el, imgUrl);
         }, false);
-
+        
         // 如果图片加载失败了，就加载错误图片或默认图片
         Img.addEventListener("error", () => {
             if (this.errorImage) {
