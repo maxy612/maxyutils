@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #imglist {
+            width: 100%;
+            margin: 30px auto;
+            white-space: nowrap;
+        }
+
+        .img {
+            width: 30%;
+            height: 200px;
+            margin-right: 5%;
+            margin-bottom: 5%;
+            border: 2px solid #00a0e9;
+            display: inline-block;
+            background-size: auto 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="imglist">
+        <p class="img" lazyload="http://img.zcool.cn/community/0117e2571b8b246ac72538120dd8a4.jpg@1280w_1l_2o_100sh.jpg"></p>
+        <p class="img" lazyload="http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg"></p>
+        <p class="img" lazyload="http://www.qqma.com/imgpic2/cpimagenew/2018/4/5/6e1de60ce43d4bf4b9671d7661024e7a.jpg"></p>
+        <p class="img" lazyload="http://img03.tooopen.com/uploadfile/downs/images/20110714/sy_20110714135215645030.jpg"></p>
+        <p class="img" lazyload="http://img05.tooopen.com/images/20150820/tooopen_sy_139205349641.jpg"></p>
+        <p class="img" lazyload="http://img3.redocn.com/tupian/20160108/lvsehuahuizhizhangfanyexiaoguobeijingsucai_5728265.jpg"></p>
+
+        <img class="img img2" lazyload="http://img02.tooopen.com/images/20150507/tooopen_sy_122395947985.jpg" alt="">
+        <img class="img img2" lazyload="http://img3.redocn.com/tupian/20150106/aixinxiangkuang_3797284.jpg" alt="">
+        <img class="img img2" lazyload="http://img.zcool.cn/community/017fcc5535f1710000001e3101c50c.jpg" alt="">
+        <img class="img img2" lazyload="http://pic20.nipic.com/20120504/9174242_113752197000_2.jpg" alt="">
+        <img class="img img2" lazyload="http://img.sccnn.com/bimg/338/24556.jpg" alt="">
+        <img class="img img2" lazyload="http://pic.58pic.com/58pic/14/62/50/62558PICxm8_1024.jpg" alt="">
+        <img class="img img2" lazyload="http://img3.redocn.com/tupian/20160108/lvsehuawentuankazhibeijingbiankuang_5728261.jpg" alt="">
+        <img class="img img2" lazyload="http://img.zcool.cn/community/01ca8c573c04b832f8757cb97b2444.jpg@1280w_1l_2o_100sh.jpg" alt="">
+
+        <p class="img" lazyload="http://img.zcool.cn/community/01ca8c573c04b832f8757cb97b2444.jpg@1280w_1l_2o_100sh.jpg"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/012cb757939a8e0000018c1b7482be.jpg@1280w_1l_2o_100sh.png"></p>
+        <p class="img" lazyload="http://i0.hdslb.com/bfs/archive/83a12dcbe6401c27e16a3333b1eba91191ac3c8e.jpg"></p>
+        <p class="img" lazyload="http://pic.58pic.com/58pic/15/57/84/70H58PICCJt_1024.jpg"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/01b88659bb7903a801212fb7949ee0.jpg@2o.jpg"></p>
+        <p class="img" lazyload="http://pic.pptbz.com/201107/2014121165684565.JPG"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/0114375543f8ec0000019ae948310f.jpg"></p>
+        <p class="img" lazyload="http://img04.tooopen.com/images/20131106/sy_45959534134.jpg"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/011a5859ac137ea8012028a92fc78a.jpg@1280w_1l_2o_100sh.jpg"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/010f725a086869a801204a0e850472.jpg@2o.jpg"></p>
+        <p class="img" lazyload="http://img.zcool.cn/community/019f4e57207bc432f875a3990cbb6b.PNG@1280w_1l_2o_100sh.png"></p>
+    </div>
+
+    <script src="../../dist/maxyutils.js"></script>
+    <script>
+        (function () {
+            maxyutils.ImgLazyload.init({
+                // container: '#imglist',
+                // // defaultImg: "http://pic.58pic.com/58pic/15/63/07/42Q58PIC42U_1024.jpg",
+                // defaultImg: "./default.jpg",
+                // errorImg: "http://photocdn.sohu.com/20150906/mp30743538_1441527062905_25.jpeg",
+                // delay: 400
+            });
+        })();
+    </script>
+</body>
+
+</html>

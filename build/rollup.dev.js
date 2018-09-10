@@ -10,17 +10,20 @@ const config = {
     output: [{
             file: `${rootPath}/dist/maxyutils.cjs.js`,
             format: "cjs",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.js`,
             format: "umd",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         },
         {
             file: `${rootPath}/dist/maxyutils.win.js`,
             format: "iife",
-            name: "maxyutils"
+            name: "maxyutils",
+            sourcemap: "inline"
         }
     ],
     plugins: [
@@ -29,7 +32,9 @@ const config = {
         }),
         clean()
     ],
-    sourcemap: "inline"
+    watch: {
+        include: `${rootPath}/src/**/**.js`
+    }
 }
 
 export default config;

@@ -1,6 +1,9 @@
 import scrollToPos from "./utils/scrollToPos"
-
+import ImgLazyload from "./utils/ImgLazyload"
+import Cookie from './utils/cookie'
 
 export default {
-    scrollToPos
+    scrollToPos,
+    ImgLazyload,
+    Cookie
 }

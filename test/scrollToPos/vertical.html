@@ -11,6 +11,7 @@
         html {
             margin: 0;
             padding: 0;
+            /* height: 100%; */
         }
 
         #test {
@@ -47,10 +48,13 @@
             const btn2 = document.querySelector("#btn2");
 
             btn1.onclick = () => {
-                maxyutils.scrollToPos({
-                    el: "#test",
-                    pos: 5600
-                });
+                // maxyutils.scrollToPos({
+                //     el: "#test",
+                //     pos: 5600
+                // }); // ok
+                maxyutils.scrollToPos(5000); // ok
+                // maxyutils.scrollToPos(); // error
+                // maxyutils.scrollToPos('abc'); // error
             }
 
             btn2.onclick = () => {

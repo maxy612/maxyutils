@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cookie</title>
+</head>
+<body>
+    <div id="app">
+        name: <p class="name"></p>
+        sex: <p class="sex"></p>
+        codeInfo: <p class="codeInfo"></p>
+    </div>
+    <script src="../../dist/maxyutils.js"></script>
+    <script>
+    (function () {
+        const Cookie = maxyutils.Cookie
+
+        Cookie.set('name', 'maxy612', {expires: new Date(Date.now() + 1000 * 60 * 10).toGMTString()})
+        Cookie.set('sex', 'male')
+
+        Cookie.set('codeInfo', JSON.stringify({a: 1, b: 2, c: 3}))
+
+        const oName = document.querySelector('.name')
+        const oSex = document.querySelector('.sex')
+        const oCodeInfo = document.querySelector('.codeInfo')
+
+        oName.textContent = Cookie.get('name')
+        oSex.textContent = Cookie.get('sex')
+        oCodeInfo.textContent = JSON.stringify(Cookie.get('codeInfo'))
+    })()
+    </script>
+</body>
+</html>
