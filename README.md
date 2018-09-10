@@ -34,10 +34,25 @@ scrollToPos({
 - opts.errorImage 可选，加载网络图片出错时的图片
 - opts.delay 滚动检测的间隔（函数节流）。每隔delay毫秒进行一次check，来加载处于视窗中的元素图片资源
 
+### Cookie操作
+- cookie增删改查
+``` javascript
+// 也可以通过import引入 import { Cookie } from 'maxyutils'
+/**
+ * key String 
+ * val String cookie值（此处可以放置JSON.stringify后的object，在获取时可以直接获取到object）
+ */
+maxyutils.Cookie.set('a', 'b')
+maxyutils.Cookie.get('a') // b
+
+maxyutils.Cookie.set('a', JSON.stringify({a: 1, b: 2, c: 3}))
+maxyutils.Cookie.get('a') // Object {a: 1, b: 2, c: 3} 
+```
+
 ``` javascript
 maxyutils.ImgLazyload.init({container: "#test", delay: 500, defaultImg: "", errorImg: ""});
 // 简写
 maxyutils.ImgLazyload.init();
 // webpack下用法同scrollToPos
-```
+``` 
 
