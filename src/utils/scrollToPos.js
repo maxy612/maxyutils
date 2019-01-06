@@ -8,8 +8,7 @@ let timer = null;
  * @pos required {Number} 滚动到的指定位置（距页面左侧或者距顶部的距离）
  * @isVertical required {Boolean} 选择上下滚动还是左右滚动(为true时上下滚动，false时左右滚动，默认上下滚动)
  * @el {String} 指定的dom元素，一般为html,body或者body下最外层的dom
- * @speed {Number} 每次滚动的距离是目前滚动总距离的 1 / speed,此值越大，滚动越快
- * @interval {Number} 定时器执行间隔。间隔越小，滚动越快 
+ * @speed {Number} 每次滚动的距离是目前滚动总距离的 1 / speed,此值越小，滚动越快
  * @return {[undefined]}      [无意义，没有返回值]
  */
 const scrollToPos = opts => {
@@ -18,8 +17,7 @@ const scrollToPos = opts => {
         pos: 0,
         el: el || "html",
         isVertical: true,
-        speed: 6,
-        interval: 10
+        speed: 6
     };
 
     if (typeof opts !== "object") {
@@ -45,7 +43,7 @@ const scrollToPos = opts => {
         }
     }
 
-    let { pos, el, isVertical, speed, interval } = config;
+    let { pos, el, isVertical, speed } = config;
 
     if (typeof pos !== "number" || pos < 0 || isNaN(pos)) {
         console.error("scrollToPos: 滚动参数pos应为大于等于0的数字");
@@ -54,7 +52,7 @@ const scrollToPos = opts => {
 
     // 重置timer
     if (timer) {
-        clearInterval(timer);
+        window.cancelAnimationFrame(timer);
         timer = null;
     }
 
@@ -86,7 +84,7 @@ const scrollToPos = opts => {
         pos = Math.max(0, maxVal);
     }
 
-    timer = setInterval(() => {
+    timer = () => {
         let scrollOri = isVertical ? window.scrollY : window.scrollX;
         let scrollDis = Math.abs(pos - scrollOri);
         let dis = 0;
@@ -94,7 +92,7 @@ const scrollToPos = opts => {
         // 如果滚动到特定位置附近了
         if (scrollDis < speed) {
             window.scrollTo(isVertical ? 0 : pos, isVertical ? pos : 0);
-            clearInterval(timer);
+            window.cancelAnimationFrame(timer)
             timer = null;
             return;
         }
@@ -111,7 +109,10 @@ const scrollToPos = opts => {
         }
 
         window.scrollTo(isVertical ? 0 : scrollOri, isVertical ? scrollOri : 0);
-    }, interval)
+        window.requestAnimationFrame(timer)
+    }
+
+    window.requestAnimationFrame(timer)
 }
 
 export default scrollToPos;
